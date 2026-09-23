@@ -1,4 +1,5 @@
-﻿# 编译产物
+# 编译产物
+.build/
 *.exe
 *.o
 *.obj
@@ -11,7 +12,8 @@ a.exe
 *.depend
 *.win
 *.code-workspace
-.vscode/
+.vscode/*
+!.vscode/tasks.json
 
 # 系统垃圾文件
 Thumbs.db

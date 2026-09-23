@@ -1,0 +1,50 @@
+{
+  // 在 course 文件夹里按 Ctrl+Shift+B 即可编译当前打开的 .c 文件
+  // 产物统一放在仓库的 .build 文件夹（已被 .gitignore 忽略，不会污染提交）
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "编译当前 C 文件",
+      "type": "shell",
+      "command": "D:\\app downloads\\Dev-Cpp\\MinGW64\\bin\\gcc.exe",
+      "args": [
+        "-Wall",
+        "-g",
+        "${file}",
+        "-o",
+        "${workspaceFolder}\\..\\.build\\${fileBasenameNoExtension}.exe"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "运行已编译的程序",
+      "type": "shell",
+      "command": "${workspaceFolder}\\..\\.build\\${fileBasenameNoExtension}.exe",
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "shared",
+        "clear": false
+      },
+      "problemMatcher": []
+    }
+  ]
+}
