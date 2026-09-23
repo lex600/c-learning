@@ -1,30 +1,33 @@
 {
-  // 在 course 文件夹里按 Ctrl+Shift+B 即可编译当前打开的 .c 文件
-  // 产物统一放在仓库的 .build 文件夹（已被 .gitignore 忽略，不会污染提交）
+  // ============================================================
+  //  你只需要记两个快捷键：
+  //    Ctrl + Shift + B   编译并运行当前打开的 .c 文件
+  //    F5                 调试（打断点、单步执行、看变量）
+  //
+  //  编译产物统一放在仓库的 .build 文件夹，不会混进 Git 提交。
+  // ============================================================
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "编译当前 C 文件",
+      // ---------- Ctrl+Shift+B 用的就是这个 ----------
+      "label": "编译并运行当前文件",
       "type": "shell",
-      "command": "D:\\app downloads\\Dev-Cpp\\MinGW64\\bin\\gcc.exe",
-      "args": [
-        "-Wall",
-        "-g",
-        "${file}",
-        "-o",
-        "${workspaceFolder}\\..\\.build\\${fileBasenameNoExtension}.exe"
-      ],
+      "command": "\"D:\\app downloads\\Dev-Cpp\\MinGW64\\bin\\gcc.exe\" -Wall -g -include \"${workspaceFolder}/.vscode/utf8console.h\" \"${file}\" -o \"${workspaceFolder}/../.build/${fileBasenameNoExtension}.exe\" && \"${workspaceFolder}/../.build/${fileBasenameNoExtension}.exe\"",
       "options": {
-        "cwd": "${fileDirname}"
+        "cwd": "${fileDirname}",
+        // 用 cmd.exe 是为了能用 && ：编译失败就不会去运行旧的 exe
+        "shell": {
+          "executable": "cmd.exe",
+          "args": ["/d", "/c"]
+        }
       },
-      "problemMatcher": [
-        "$gcc"
-      ],
+      "problemMatcher": ["$gcc"],
       "presentation": {
         "echo": true,
         "reveal": "always",
         "panel": "shared",
-        "clear": true
+        "clear": true,
+        "focus": true
       },
       "group": {
         "kind": "build",
@@ -32,19 +35,29 @@
       }
     },
     {
-      "label": "运行已编译的程序",
+      // ---------- 只编译不运行：F5 调试前会自动调用它 ----------
+      "label": "编译当前 C 文件",
       "type": "shell",
-      "command": "${workspaceFolder}\\..\\.build\\${fileBasenameNoExtension}.exe",
+      "command": "D:\\app downloads\\Dev-Cpp\\MinGW64\\bin\\gcc.exe",
+      "args": [
+        "-Wall",
+        "-g",
+        "-include",
+        "${workspaceFolder}/.vscode/utf8console.h",
+        "${file}",
+        "-o",
+        "${workspaceFolder}\\..\\.build\\${fileBasenameNoExtension}.exe"
+      ],
       "options": {
         "cwd": "${fileDirname}"
       },
+      "problemMatcher": ["$gcc"],
       "presentation": {
         "echo": true,
         "reveal": "always",
         "panel": "shared",
-        "clear": false
-      },
-      "problemMatcher": []
+        "clear": true
+      }
     }
   ]
 }

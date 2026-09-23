@@ -1,0 +1,44 @@
+{
+  // 调试配置：在 VS Code 里按 F5 启动
+  // 会自动先执行 tasks.json 里的「编译当前 C 文件」，再挂上 gdb 调试
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "调试当前 C 文件 (F5)",
+      "type": "cppdbg",
+      "request": "launch",
+
+      // 要调试的程序：和编译任务输出到同一个地方
+      "program": "${workspaceFolder}\\..\\.build\\${fileBasenameNoExtension}.exe",
+
+      // 命令行参数（现在不需要，以后学 argv 时用得上）
+      "args": [],
+
+      // false = 直接跑起来，不在 main 第一行停下
+      // 想让它停在 main 开头，改成 true
+      "stopAtEntry": false,
+
+      "cwd": "${fileDirname}",
+      "environment": [],
+
+      // true = 程序在独立的控制台窗口里跑，scanf 才能正常输入
+      // （cppdbg 不支持在 VS Code 集成终端里运行程序）
+      "externalConsole": true,
+
+      "MIMode": "gdb",
+      "miDebuggerPath": "D:\\app downloads\\Dev-Cpp\\MinGW64\\bin\\gdb.exe",
+
+      "setupCommands": [
+        {
+          // 让 gdb 用更易读的方式显示结构体、数组等复合类型
+          "description": "启用整齐打印",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+
+      // 按 F5 时先自动编译，编译失败就不会启动调试
+      "preLaunchTask": "编译当前 C 文件"
+    }
+  ]
+}

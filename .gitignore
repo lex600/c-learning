@@ -15,6 +15,8 @@ a.exe
 .vscode/*
 !.vscode/tasks.json
 !.vscode/settings.json
+!.vscode/launch.json
+!.vscode/utf8console.h
 
 # 系统垃圾文件
 Thumbs.db
