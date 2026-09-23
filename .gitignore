@@ -14,6 +14,7 @@ a.exe
 *.code-workspace
 .vscode/*
 !.vscode/tasks.json
+!.vscode/settings.json
 
 # 系统垃圾文件
 Thumbs.db

@@ -1,0 +1,19 @@
+{
+  // ===== C 语言相关 =====
+  // 让 C/C++ 扩展使用你 Dev-C++ 自带的编译器
+  // 配了这行，#include <stdio.h> 才不会标红报错
+  "C_Cpp.default.compilerPath": "D:\\app downloads\\Dev-Cpp\\MinGW64\\bin\\gcc.exe",
+  "C_Cpp.default.cStandard": "c11",
+  "C_Cpp.default.intelliSenseMode": "windows-gcc-x64",
+
+  // ===== 编码 =====
+  // 自动识别编码：旧笔记是 GBK，新写的文件是 UTF-8，两种都能正常显示中文
+  "files.autoGuessEncoding": true,
+
+  // ===== 写着舒服一点 =====
+  "editor.wordWrap": "on",           // 长代码自动换行，不用左右拖
+  "editor.fontSize": 16,             // 觉得小就改大，觉得大就改小
+  "editor.renderWhitespace": "boundary",
+  "files.trimTrailingWhitespace": true,  // 存盘时自动清掉行尾多余空格
+  "files.insertFinalNewline": true       // 存盘时确保文件以空行结尾
+}
