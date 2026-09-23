@@ -1,0 +1,18 @@
+﻿# 编译产物
+*.exe
+*.o
+*.obj
+*.out
+*.gch
+a.exe
+
+# Dev-C++ / 编辑器
+*.layout
+*.depend
+*.win
+*.code-workspace
+.vscode/
+
+# 系统垃圾文件
+Thumbs.db
+desktop.ini
